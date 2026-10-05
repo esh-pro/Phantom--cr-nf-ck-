@@ -75,8 +75,8 @@ logger = logging.getLogger("phantom")
 # ═══════════════════════════════════════════════════════════════
 #  CONFIG — ENV VARS
 # ═══════════════════════════════════════════════════════════════
-BOT_TOKEN         = os.environ["8614516233:AAFeQoEBkbNUzIsIvTpWjT_CDiou-x5Ed2I"]
-MONGO_URI         = os.environ["mongodb+srv://Esh-pro:p5wCQeb32BUzU8Ip@cluster0.uh9j9d7.mongodb.net/?appName=Cluster0"]
+BOT_TOKEN         = os.environ.get("BOT_TOKEN", "8614516233:AAFeQoEBkbNUzIsIvTpWjT_CDiou-x5Ed2I")
+MONGO_URI         = os.environ.get("MONGO_URI", "mongodb+srv://Esh-pro:p5wCQeb32BUzU8Ip@cluster0.uh9j9d7.mongodb.net/?appName=Cluster0")
 RENDER_APP_NAME   = os.environ.get("RENDER_APP_NAME", "")
 PORT              = int(os.environ.get("PORT", 8081))
 _fk               = os.environ.get("FERNET_KEY")
@@ -89,7 +89,6 @@ ADMIN_IDS.add(OWNER_ID)
 WEBHOOK_URL       = os.environ.get("WEBHOOK_URL", f"https://{RENDER_APP_NAME}.onrender.com/webhook" if RENDER_APP_NAME else "")
 DB_NAME           = "phantombot"
 POLLINATIONS_BASE = "https://image.pollinations.ai/prompt/{prompt}?width=1280&height=720&nologo=true&model=flux&seed={seed}"
-
 # Semaphores — RAM guard (512MB Render free tier)
 NF_SEM     = asyncio.Semaphore(4)
 CR_SEM     = asyncio.Semaphore(3)
